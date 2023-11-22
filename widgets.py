@@ -523,12 +523,11 @@ class Face(QWidget):
         self.update_img()
         self.vbox.addWidget(self.ai_frame)
 
+# 修正后的 ResizableRubberBand 类
 class ResizableRubberBand(QWidget):
     def __init__(self, main):
         super(ResizableRubberBand, self).__init__(main.gv)
-        self.get_zoom_factor = main.get_zoom_factor
-
-        self.img_class, self.update, self.zoom_factor = main.img_class, main.update, main.zoom_factor
+        self.img_class, self.update_img, self.zoom_factor = main.img_class, main.update_img, main.zoom_factor
         self.draggable, self.mousePressPos, self.mouseMovePos = True, None, None
         self.left, self.right, self.top, self.bottom = None, None, None, None
         self.borderRadius = 0
@@ -596,4 +595,3 @@ class ResizableRubberBand(QWidget):
         if self.top < 0:
             self.top = 0
             self.move(self.left, 0)
-
